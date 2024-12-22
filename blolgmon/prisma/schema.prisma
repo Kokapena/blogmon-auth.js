@@ -13,40 +13,27 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model User {
-  id             String   @id @default(auto()) @map("_id") @db.ObjectId
-  name           String
-  email          String   @unique
-  profilePicture String?
-  bio            String?
-  role           String   @default("viewer") // admin, editor, viewer
-  createdAt      DateTime @default(now())
-  updatedAt      DateTime @updatedAt
-  articles       Article[]
-  comments       Comment[]
-}
  
 model Article {
   id         String    @id @default(auto()) @map("_id") @db.ObjectId
   title      String
   content    String
   tags       String[]
-  authorId   String    @db.ObjectId
-  author     User      @relation(fields: [authorId], references: [id])
   image      String?
   createdAt  DateTime  @default(now())
   updatedAt  DateTime  @updatedAt
-  comments   Comment[]
 }
  
-model Comment {
-  id         String    @id @default(auto()) @map("_id") @db.ObjectId
-  content    String
-  articleId  String    @db.ObjectId
-  article    Article   @relation(fields: [articleId], references: [id])
-  userId     String    @db.ObjectId
-  user       User      @relation(fields: [userId], references: [id])
-  createdAt  DateTime  @default(now())
-  updatedAt  DateTime  @updatedAt
+
+model Utilisateur {
+  id          String      @id @default(auto()) @map("_id") @db.ObjectId
+  pseudo      String
+  nom         String
+  prenom      String
+  anniversaire DateTime
+  email       String   @unique
+  mdp         String
+  description String?
+  date_creation DateTime @default(now())
 }
 

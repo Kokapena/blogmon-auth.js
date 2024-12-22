@@ -2,6 +2,8 @@ import Footer from './components/Footer';
 import Navbar from './components/Navbar';
 import TopBar from './components/TopBar';
 import "./globals.css";
+import SessionProviderWrapper from './sessionprovider';
+
 
 export default function RootLayout({
   children,
@@ -13,7 +15,7 @@ export default function RootLayout({
       <body>
         <TopBar/>
         <Navbar/>
-        {children}
+        <SessionProviderWrapper>{children}</SessionProviderWrapper>
         <Footer/>
       </body>
     </html>
