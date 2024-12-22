@@ -1,5 +1,10 @@
 # Auth.Js Titouan Meheut
 ## Architecture des fichiers
-
-
+fichier different
+-api
+-connexion
+-inscription
+-gestionUtilisateur
+-prisma
+.env
 ## Quelque test Gestion User
